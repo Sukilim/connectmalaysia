@@ -1,0 +1,47 @@
+body
+  #page
+    / -unless @user.user_profile.first_name.nil?
+    /   h1= "Hello #{@user.user_profile.first_name}"
+
+    = render 'users/partials/profile'
+
+    / -unless @user_profile.avatar.url.nil?
+    /   = image_tag @user_profile.avatar.url(:display)
+
+    / h2 Dashboard
+
+    / table.table
+    /   thead
+    /     tr
+    /       th Area
+    /       th Location
+    /       th Budget
+    /       th Rent or Sale
+    /       th Pet Friendly
+    /       th Square Feet
+    /       th Furnished
+    /       th No of rooms
+    /       th No of Carpark
+    /       th House or condo
+    /       th Date needed
+    /       th Special Request
+    /       th Edit Request
+    /       th Delete Request
+
+    /   tbody
+    /   - @request.each do |list|
+    /     tr
+    /       td= list.area_id
+    /       td= list.location_id
+    /       td= "#{list.budget_min} - #{list.budget_max}"
+    /       td= list.rent_sale
+    /       td= list.pet_friendly
+    /       td= list.sq_ft
+    /       td= list.furnished
+    /       td= list.no_of_rooms
+    /       td= list.no_of_carpark
+    /       td= list.house_condo
+    /       td= list.date_needed
+    /       td= list.special_req
+    /       td= link_to "Edit Request", edit_request_path
+    /       td= link_to "Delete Request", request_path(list.id), method: :delete
